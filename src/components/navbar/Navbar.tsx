@@ -1,6 +1,7 @@
 import { IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton, IonList, IonItem, IonButton } from "@ionic/react";
-import { Link } from "react-router-dom";
 import { useIonRouter } from "@ionic/react";
+// import { IonItem } from "@ionic/react";
+// import { Link } from "react-router-dom";
 
 
 
@@ -8,6 +9,16 @@ const Navbar : React.FC = () => {
     const router = useIonRouter();
     return (
         <>
+        {/* <div>
+            <ul>
+      <IonItem>
+        <Link to="/home">Home</Link>
+      </IonItem>
+      <IonItem>
+        <Link to="/component-demo">Component Demo</Link>
+      </IonItem>
+            </ul>
+        </div> */}
         <IonMenu side="end" contentId="main-content">
             <IonHeader>
                 <IonToolbar>
@@ -17,8 +28,18 @@ const Navbar : React.FC = () => {
 
             <IonContent>
                 <IonList>
-                    <IonItem><Link to="/home">Home</Link></IonItem>
+                    <IonItem>
+                        <IonButton  onClick={() => router.push('/home')}>Home</IonButton>
+                    </IonItem>
+                    <IonItem>
+                        <IonButton onClick={() => router.push('/component-demo')}>Component</IonButton>
+                    </IonItem>
+                    <IonItem>
+                        <IonButton onClick={() => router.push('/list')}>List</IonButton>
+                    </IonItem>
                 </IonList>
+                
+                
             </IonContent>
         </IonMenu>
 

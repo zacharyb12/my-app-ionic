@@ -39,5 +39,7 @@ ionic serve
 
 - 'IonItem' : element de la liste
 
+# Icons disponibles : https://ionic.io/ionicons
+
 
 
