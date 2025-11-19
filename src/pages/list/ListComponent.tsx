@@ -1,14 +1,11 @@
 import { IonList, IonItem, IonLabel, IonButton, IonInput } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './listcomponent.css';
+import serviceLocal from "../../services/serviceLocal";
 
 const ListComponent : React.FC = () => {
 
-    const [data , setData] = useState<string[]>([
-        "premier",
-        "deuxième",
-        "troisième"
-    ]);
+    const [data , setData] = useState<string[]>([]);
 
     const [inputValue, setInputValue] = useState<string>('');
 
@@ -20,7 +17,15 @@ const ListComponent : React.FC = () => {
     const removeItem = (index : number) => {
         const newData = data.filter((_, i) => i !== index);
         setData(newData);
+        serviceLocal.setData(newData);
     }
+
+    useEffect(() => {
+        const localData = serviceLocal.getData();
+        setData(localData);
+
+    },[data])
+
 
     return (
         <div className="mt-8">
