@@ -37,6 +37,10 @@ const Navbar : React.FC = () => {
                     <IonItem>
                         <IonButton onClick={() => router.push('/list')}>List</IonButton>
                     </IonItem>
+
+                    <IonItem>
+                        <IonButton onClick={() => router.push('/details/42')}>Details</IonButton>
+                    </IonItem>
                 </IonList>
                 
                 

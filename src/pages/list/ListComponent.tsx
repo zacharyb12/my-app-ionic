@@ -1,13 +1,15 @@
-import { IonList, IonItem, IonLabel, IonButton, IonInput } from "@ionic/react";
+import { IonList, IonItem, IonLabel, IonButton, IonInput, useIonRouter } from "@ionic/react";
 import { useEffect, useState } from "react";
 import './listcomponent.css';
 import serviceLocal from "../../services/serviceLocal";
 
 const ListComponent : React.FC = () => {
-
+// les states local pour gérer les données
     const [data , setData] = useState<string[]>([]);
 
     const [inputValue, setInputValue] = useState<string>('');
+
+    // fonction pour gérer la liste
 
     const addItem = () => {
         setData([...data, inputValue]);
@@ -20,12 +22,15 @@ const ListComponent : React.FC = () => {
         serviceLocal.setData(newData);
     }
 
+    // useEffect est disponble
     useEffect(() => {
         const localData = serviceLocal.getData();
         setData(localData);
 
     },[data])
 
+    // Le router de useIonRouter permet de rediriger l'utilisateur
+    const router = useIonRouter();
 
     return (
         <div className="mt-8">
@@ -48,6 +53,12 @@ const ListComponent : React.FC = () => {
             ))}
             
         </IonList>
+
+        <h2>Redirection vers une page Details</h2>
+
+        <IonButton onClick={() => router.push(`/details/${42}`)}>
+            Accéder a la page détails
+        </IonButton>
         </div>
     )
 }
